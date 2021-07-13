@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Data
@@ -35,11 +34,11 @@ public class Customers {
     )
     private String address;
 
-    @OneToMany(
-            mappedBy = "customers",
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-            fetch = FetchType.LAZY)
-    private Set<Invoices> invoices;
+//    @OneToMany(
+//            mappedBy = "customers",
+//            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+//            fetch = FetchType.LAZY)
+//    private Set<Invoices> invoices;
 
     public Customers(String customerName, String phone, String address) {
         this.customerName = customerName;
@@ -47,10 +46,4 @@ public class Customers {
         this.address = address;
     }
 
-    public Customers(Long id, String customerName, String phone, String address) {
-        this.id = id;
-        this.customerName = customerName;
-        this.phone = phone;
-        this.address = address;
-    }
 }

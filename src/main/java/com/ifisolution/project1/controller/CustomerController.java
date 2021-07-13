@@ -5,6 +5,7 @@ import com.ifisolution.project1.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -18,6 +19,7 @@ public class CustomerController {
     }
 
     @GetMapping
+    @RolesAllowed("user")
     public List<Customers> getCustomers(){
         return customerService.getCustomers();
     }
